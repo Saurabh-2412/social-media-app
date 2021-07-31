@@ -11,6 +11,7 @@ export function NewPost(){
   const [ status, setState ] = useState("idle");
   const [ image, setImage ] = useState("");
   const onContentChanged = e => setContent(e.target.value);
+  const canSave = Boolean(content) || Boolean(image);
 
   const onSavePostClicked = async () => {
     try {
@@ -31,10 +32,13 @@ export function NewPost(){
     event.target.value = "";
   };
 
+  const removeImage = () => {
+    setImage("");
+  };
+
   return (
     <div>
       <form>
-      <h1>New Post</h1>
         <div className="flex items-center">
           <textarea
               id="postContent"
@@ -42,7 +46,12 @@ export function NewPost(){
               value={content}
               onChange={onContentChanged}
           />
-          <button type="button" onClick={onSavePostClicked}>Save Post</button>
+          <button
+          className=" mr-3 md:mr-5 px-8 bg-blue-500 text-white ring rounded-full hover:bg-blue-700 hover:shadow"
+          disabled={!canSave}
+          onClick={onSavePostClicked}>
+          {status === "pending" ? "wait..." : "Post"}
+        </button>
 
           <label
             htmlFor="file"
@@ -57,9 +66,16 @@ export function NewPost(){
               onChange={addImage}
             />
           </label>
+          {image && (
+            <button
+              className="text-2xl cursor-pointer"
+              onClick={removeImage}
+              title="Remove image"
+            >X</button>
+          )}
         </div>
       </form>
-      <PostList/>
+      {/** <PostList/> */}
     </div>
   )
 }

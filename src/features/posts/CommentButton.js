@@ -4,9 +4,11 @@ import { postComment } from "./postSlice";
 
 //fetching single comment
 export function CommentListner({ post }){
-    //console.log(post._id);
-    let postComments = post.comments.filter((postedElement) => postedElement.userId === "654321");
-    //console.log("posted comments",postComments);
+    //console.log("post",post);
+    //const postedComments = post.comments;
+    //console.log("postedComments",postedComments);
+    let postComments = post.comments.map((postedElement) => postedElement.userId === "123456");
+    //console.log("filtered comments",postComments.comment);
     return (
         <div>
             {postComments && <p style={{color:"gray"}}>{postComments.comment}</p> }

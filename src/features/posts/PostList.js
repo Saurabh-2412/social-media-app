@@ -1,49 +1,52 @@
-import React, { useEffect } from "react";
+import React, { Component, useEffect,useState } from "react";
 import { Navigate, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { unwrapResult } from "@reduxjs/toolkit";
 import { loadPosts } from "./postSlice";
+import { NewPost } from "./NewPost";
+import { orderPostByDate } from "../Utils/OrderedPostByDate";
+import { PostBody } from "./PostBody";
 import { LikeButton } from "./LikeButton";
 import { CommentOnPost } from "./CommentButton";
 import { ViewPost } from "./ViewPost";
 
-export function PostList() {
-    const { status, posts, error } = useSelector((state) => state.posts);
+export const PostList = () => {
+    const [status, setStatus] = useState("idle");
+    const { posts } = useSelector((state) => state.posts);
     const dispatch = useDispatch();
-    //const posts = useSelector((state) => { return state.posts});
-
+  
     useEffect(() => {
         (async () => {
-        if (status === "idle") {
-            dispatch(loadPosts());
-        }
+            try {
+              setStatus("pending");
+              const result = await dispatch(loadPosts());
+              unwrapResult(result);
+              setStatus("success");
+            } catch (error) {
+              console.log(error);
+              setStatus("idle");
+            }
         })();
-    }, [status, dispatch]);
-    
-    return (
-        <div>
-            <div>
-                {posts.map((post) => (
-                    <article
-                        key={post._id}
-                        style={{
-                        border: "2px solid black",
-                        padding: "15px",
-                        margin: "5px"
-                        }}
-                        className="post"
-                    >
-                        <NavLink className="NavLink" to={`./viewpost/${post._id}`}>
-                            {post.image && <img src={post.image} alt=""/>}
-                        </NavLink>
-                        <LikeButton post={post}/>
-                        <CommentOnPost post={post}/>
-                        <NavLink className="NavLink" to={`./viewpost/${post._id}`}>
-                            ViewPost
-                        </NavLink>
-                        {/** <button onClick={() => ViewPostClickHandler(post._id)}>ViewPost</button> */}
-                    </article>
-                ))}
+    }, [dispatch]);
+  
+    const orderedPost = orderPostByDate(posts);
+  
+    let renderContent =
+        posts.length === 0 ? (
+            <div className="text-center">
+            <p className="p-2">No posts found</p>
             </div>
-        </div>
+        ) : (
+            React.Children.toArray(
+            orderedPost?.map((post) => <PostBody post={post} />)
+            )
+        );
+  
+    return (
+      <div className="flex items-center flex-col mt-3 mb-5">
+        <NewPost />
+        {status === "pending" && "Loading..."}
+        {status === "success" && renderContent}
+      </div>
     );
-}
+  };
