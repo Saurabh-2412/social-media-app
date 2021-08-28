@@ -12,11 +12,11 @@ export function NewPost(){
   const [ image, setImage ] = useState("");
   const onContentChanged = e => setContent(e.target.value);
   const canSave = Boolean(content) || Boolean(image);
-
-  const onSavePostClicked = async () => {
+  
+  const onSubmitHandler = async () => {
     try {
       setState("pending");
-      const result = await dispatch(createPost({ content,image }));
+      const result = await dispatch(createPost({ content, image }));
       unwrapResult(result);
       setContent("");
       setImage("");
@@ -37,25 +37,20 @@ export function NewPost(){
   };
 
   return (
-    <div>
-      <form>
+    <div className="input-box bg-white pt-3 mb-5 w-full md:max-w-lg rounded shadow">
+      <div className="flex pl-2 py-3x">
+        <textarea
+          className="resize-auto rounded mx-3 my-1 p-1 w-full bg-gray-100"
+          placeholder="what do you have in mind?"
+          value={content}
+          onChange={onContentChanged}></textarea>
+      </div>
+      <div className="flex justify-between mb-2 mt-2">
         <div className="flex items-center">
-          <textarea
-              id="postContent"
-              name="postContent"
-              value={content}
-              onChange={onContentChanged}
-          />
-          <button
-          className=" mr-3 md:mr-5 px-8 bg-blue-500 text-white ring rounded-full hover:bg-blue-700 hover:shadow"
-          disabled={!canSave}
-          onClick={onSavePostClicked}>
-          {status === "pending" ? "wait..." : "Post"}
-        </button>
-
           <label
             htmlFor="file"
-            className="flex cursor-pointer items-center rounded p-2 ml-14 font-medium hover:bg-gray-100">
+            className="flex cursor-pointer items-center rounded p-2 ml-5 font-medium  hover:bg-gray-100">
+            <i class="material-icons text-gray-700 mr-2.5">&#xe251;</i>
             <span className="text-gray-700">Add Photo</span>
             <input
               type="file"
@@ -67,15 +62,21 @@ export function NewPost(){
             />
           </label>
           {image && (
-            <button
+            <span
               className="text-2xl cursor-pointer"
               onClick={removeImage}
               title="Remove image"
-            >X</button>
+            ><i class="material-icons">&#xe872;</i></span>
           )}
         </div>
-      </form>
-      {/** <PostList/> */}
+
+        <button
+          className=" mr-3 md:mr-5 px-8 bg-blue-500 text-white ring rounded-full hover:bg-blue-700 hover:shadow"
+          disabled={!canSave}
+          onClick={onSubmitHandler}>
+          {status === "pending" ? "wait..." : "Post"}
+        </button>
+      </div>
     </div>
   )
 }
