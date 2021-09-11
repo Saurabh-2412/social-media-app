@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postComment } from "./postSlice";
 import { getLocalStorage } from "../authentication/Storage";
 
@@ -22,7 +22,6 @@ export function CommentOnPost({ post }){
     const [ textBox, textBoxSetter ] = useState("none");
     const [comment, setComment] = useState("");
     const dispatch = useDispatch();
-    const [pending, setPending] = useState("idle");
     
     function textBoxToggle(){
         if(textBox === "none"){
@@ -41,7 +40,9 @@ export function CommentOnPost({ post }){
     return (
         <div>
             <div>
-                <button onClick={() => textBoxToggle(post)}><i class="material-icons">&#xe0b9;</i></button>
+                <button className="post-buttons" onClick={() => textBoxToggle(post)}>
+                    <span className="pl-1 text-base"><i class="material-icons">&#xe0b9;</i></span>
+                </button>
                 <div className="flex items-center flex-col my-2" style={{ display:`${textBox}` }}>
                     <textarea
                     autoFocus={true}

@@ -7,7 +7,7 @@ export const fetchAllPosts = createAsyncThunk(
     const { data } = await axios.get(
       `https://Social-Media.saurabhsharma11.repl.co/v1/posts/feed`
     );
-    console.log("api",data);
+    //console.log("api",data);
     return data;
   }
 );
@@ -69,8 +69,8 @@ export const deletePost = createAsyncThunk(
       const { status, data } = await axios.delete(
         `https://Social-Media.saurabhsharma11.repl.co/v1/posts/${postid}`
       );
-      console.log("delete",data);
-      if (status === 201) {
+      //console.log("delete",data);
+      if (status === 200) {
         return fulfillWithValue(data);
       }
     } catch (error) {
@@ -85,7 +85,7 @@ export const editPost = createAsyncThunk(
     let postUpdatedData = {
       desc: desc
     };
-    console.log(postid,desc,image,"from editpostapi");
+    //console.log(postid,desc,image,"from editpostapi");
     if (image) {
       const formData = new FormData();
       const fileName = Date().now + image.name;
@@ -108,9 +108,9 @@ export const editPost = createAsyncThunk(
       const { status, data } = await axios.post(
         `https://Social-Media.saurabhsharma11.repl.co/v1/posts/${postid}`, postUpdatedData
       );
-      console.log(data);
-      if (status === 201) {
-        return fulfillWithValue(data);
+      //console.log(data);
+      if (status === 200) {
+        return fulfillWithValue(data.post);
       }
     } catch (error) {
       return rejectWithValue(error);
@@ -124,7 +124,7 @@ export const likePost = createAsyncThunk("post/likePost",
       const { status, data } = await axios.post(
         `https://Social-Media.saurabhsharma11.repl.co/v1/posts/likepost/${postId}`
       );
-      console.log(status,data);
+      //console.log(status,data);
       if (status === 201) {
         return fulfillWithValue(data);
       }
@@ -202,7 +202,7 @@ export const postComment = createAsyncThunk(
 export const dropComment = createAsyncThunk(
   "post/unComment",
   async ({ postid }, { fulfillWithValue, rejectWithValue }) => {
-    console.log(postid);
+    //console.log(postid);
     try {
       const { status, data } = await axios.post(
         `https://Social-Media.saurabhsharma11.repl.co/v1/posts/uncomment/${postid}`
@@ -273,9 +273,11 @@ export const postSlice = createSlice({
       state.status = "pending";
     },
     [editPost.fulfilled]: (state, action) => {
-      console.log(action.payload,"edit");
+      //console.log(action.payload,"edit");
       state.status = "success";
-      state.posts = action.payload;
+      const index = state.posts.findIndex((post) => post._id === action.payload._id);
+      state.posts.splice(index, 1, action.payload);
+      //console.log("fulfilled",index);
     },
     [editPost.rejected]: (state, action) => {
       state.status = "failed";
@@ -286,7 +288,11 @@ export const postSlice = createSlice({
     },
     [deletePost.fulfilled]: (state, action) => {
       state.status = "success";
-      state.posts = action.payload;
+      //state.posts = action.payload;
+      //console.log("delete post",action.payload);
+      const index = state.posts.findIndex((post) => post._id === action.payload._id);
+      //console.log("index",index);
+      state.posts.splice(index, 1);
     },
     [fetchAllPosts.pending]: (state) => {
       state.status = "pending";

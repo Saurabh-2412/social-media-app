@@ -13,12 +13,12 @@ export const UserData = ({ user }) => {
             <div className="flex text-gray-500 mt-1">
                 {user.location && (
                     <div className="flex items-center">
-                        <i class="material-icons">&#xe55f;</i><span className="">{user.location}</span>
+                        <i className="material-icons">&#xe55f;</i><span className="">{user.location}</span>
                     </div>
                 )}
                 {user.url && (
                     <div className="flex ml-2 items-center">
-                        <i class="material-icons">&#xe894;</i>
+                        <i className="material-icons">&#xe894;</i>
                         <a
                         href={`https://${user.url}`}
                         className="pl-1"

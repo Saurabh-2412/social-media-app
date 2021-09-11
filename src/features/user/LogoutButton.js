@@ -14,7 +14,7 @@ export const Logout = () => {
   };
   return (
     <button onClick={logOutHandler} className="logout-button flex items-center ring rounded mb-3 p-0.5">
-      <i class="material-icons">&#xe879;</i><span></span>
+      <i className="material-icons">&#xe879;</i><span></span>
       {/** <FiLogOut className="pl-1 text-2xl" /> */}
     </button>
   );

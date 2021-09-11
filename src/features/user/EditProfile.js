@@ -1,6 +1,6 @@
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateUser } from "../authentication/AuthSlice";
 import { updateProfile } from "./userSlice";
 import { ProfilePhoto } from "../NavBar/ProfilePhoto";
@@ -8,7 +8,7 @@ import { ProfilePhoto } from "../NavBar/ProfilePhoto";
 export const EditProfile = ({ setshowEditModal, user }) => {
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.auth);
+  //const { currentUser } = useSelector((state) => state.auth);
 
   const [values, setValues] = useState({
     name: user.name,
@@ -79,7 +79,7 @@ export const EditProfile = ({ setshowEditModal, user }) => {
                               className="text-2xl cursor-pointer"
                               onClick={removeImage}
                               title="Remove image"
-                              ><i class="material-icons">&#xe872;</i></button>
+                              ><i className="material-icons">&#xe872;</i></button>
                             </span>
                           )}
                       </div>

@@ -11,7 +11,7 @@ export function Navbar({ setShowModal }){
             <div className="flex p-2">
                 <p className="text-2xl md:text-3xl font-bold text-gray-500">
                     <Link to="/feed">
-                        <i class="material-icons">&#xe8e5;</i>Trender
+                        <i className="material-icons font-bold">&#xe8e5;</i>Trender
                     </Link>
                 </p>
             </div>
@@ -43,7 +43,7 @@ export function Navbar({ setShowModal }){
                     <Link
                     to="/login"
                     className="flex items-center rounded-full mt-1 4 mr-2 md:mr-4 text-">
-                    <i class="material-icons">&#xe879;</i>
+                    <i className="material-icons">&#xe879;</i>
                     </Link>
                 )
             }

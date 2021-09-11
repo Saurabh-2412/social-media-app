@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { ProfilePagePhoto } from "./ProfilePhoto";
 import { PostHeader } from "../posts/PostHeader";
 import { useDispatch, useSelector } from "react-redux";
-import { getFollowing, selectUserById } from "./userSlice";
+import { getFollowing } from "./userSlice";
 import { useState } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { toastError } from "../Utils/ToastMessages";

@@ -1,7 +1,7 @@
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../authentication/AuthSlice";
+import { useDispatch } from "react-redux";
+//import { updateUser } from "../authentication/AuthSlice";
 import { editPost } from "./postSlice";
 import { PostPhoto } from "./PostPhoto";
 
@@ -9,8 +9,8 @@ export const EditPost = ({ setshowEditModal, post }) => {
     const [image, setImage] = useState("");
     const [desc, setDesc] = useState("");
     const dispatch = useDispatch();
-    const { currentUser } = useSelector((state) => state.auth);
-    const [postid,setPostId] = useState(post._id);
+    //const { currentUser } = useSelector((state) => state.auth);
+    const [ postid ] = useState(post._id);
 
     const [values, setValues] = useState({
         desc: post.desc,
@@ -70,7 +70,7 @@ export const EditPost = ({ setshowEditModal, post }) => {
                               className="text-2xl cursor-pointer"
                               onClick={removeImage}
                               title="Remove image"
-                              ><i class="material-icons">&#xe872;</i></button>
+                              ><i className="material-icons">&#xe872;</i></button>
                             </span>
                           )}
                       </div>

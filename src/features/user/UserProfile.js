@@ -48,7 +48,7 @@ export const UserProfile = () => {
         <div className="bg-white mt-1 p-2 w-full md:p-0 md:w-2/5 rounded shadow">
             <div className=" justify-between mx-2 py-1 border-b-2">
                 <Link to="/feed" className="flex items-center text-2xl font-bold ">
-                    <i class="material-icons">&#xe5c4;</i><span>Feed</span>
+                    <i className="material-icons">&#xe5c4;</i><span>Feed</span>
                 </Link>
             </div>
             <div className="flex relative  p-2 md:p-3">
@@ -78,7 +78,7 @@ export const UserProfile = () => {
                     <span className="pl-1 text-base"> My Posts</span>
                 </NavLink>
                 <NavLink to="mylikes" className="post-buttons">
-                    <i class="material-icons pl-1 text-base">&#xe8dc;</i>
+                    <i className="material-icons pl-1 text-base">&#xe8dc;</i>
                     <span className="pl-1 text-base">Likes</span>
                 </NavLink>
             </div>

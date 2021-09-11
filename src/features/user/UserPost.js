@@ -2,7 +2,7 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PostBody } from "../../features/posts/PostBody";
+//import { PostBody } from "../../features/posts/PostBody";
 import { getUserPost } from "../../features/posts/postSlice";
 import { orderPostByDate } from "../../features/Utils/OrderedPostByDate";
 import { toastError } from "../../features/Utils/ToastMessages";
@@ -11,7 +11,7 @@ import { Posts } from "../posts/Posts";
 export const UserPost = () => {
   const [status, setStatus] = useState("idle");
   const { user } = useSelector((state) => state.user);
-  const { currentUser } = useSelector((state) => state.auth);
+  //const { currentUser } = useSelector((state) => state.auth);
   const { posts } = useSelector((state) => state.posts);
   const { token } = useSelector((state) => state.auth);
   const orderedPost = orderPostByDate(posts);

@@ -1,17 +1,17 @@
-import React,{ useState, useEffect } from "react";
+import React,{ useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";//useSelector
 import { unwrapResult } from "@reduxjs/toolkit";
-import { LikeButton } from "./LikeButton";
-import { CommentOnPost } from "./CommentButton";
-import { deletePost, editPost } from "./postSlice";
+/* import { LikeButton } from "./LikeButton";
+import { CommentOnPost } from "./CommentButton"; */
+import { deletePost } from "./postSlice";//editPost
 import { EditPost } from "./EditPost";
 
 export function Posts ({ post }) {
     const [showEditModal, setshowEditModal] = useState(false);
     const { desc, likes, image, comments, _id } = post;
-    const { token } = useSelector((state) => state.auth);
-    const [status, setStatus] = useState("idle");
+    /* const { token } = useSelector((state) => state.auth);
+    const [status, setStatus] = useState("idle"); */
     const dispatch = useDispatch();
 
     function EditingPost(postid){
@@ -42,16 +42,16 @@ export function Posts ({ post }) {
                 {/** <LikeButton post={post} /> */}
                 {/** <CommentOnPost post={post} /> */}
                 <Link className="post-buttons" to={`/viewpost/${_id}`}>
-                    <span className="pl-1 text-base"><i class="material-icons">&#xe8f4;</i></span>
+                    <span className="pl-1 text-base"><i className="material-icons">&#xe8f4;</i></span>
                 </Link>
                 <button onClick={EditingPost}>
-                    <i class="material-icons">&#xe254;</i>
+                    <i className="material-icons">&#xe254;</i>
                 </button>
                 {showEditModal && (
                     <EditPost setshowEditModal={setshowEditModal} post={post}/>
                 )}
                 <button onClick={() => DeletingPost(_id)}>
-                    <i class="material-icons">&#xe872;</i>
+                    <i className="material-icons">&#xe872;</i>
                 </button>
             </div>
         </div>

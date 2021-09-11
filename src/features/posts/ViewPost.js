@@ -46,7 +46,7 @@ export function ViewPost() {
                             <Link
                                 to="/feed"
                                 className="flex items-center text-2xl font-bold ">
-                                <i class="material-icons">&#xe5c4;</i><span>Feed</span>
+                                <i className="material-icons">&#xe5c4;</i><span>Feed</span>
                             </Link>
                         </div>
                         <div className="flex pl-2 pt-3">

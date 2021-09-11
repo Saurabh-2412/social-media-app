@@ -1,21 +1,21 @@
-import React, { Component, useEffect,useState } from "react";
-import { Navigate, NavLink } from "react-router-dom";
+import React, { useEffect,useState } from "react";
+//import { Navigate, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { fetchAllPosts } from "./postSlice";
 import { NewPost } from "./NewPost";
 import { orderPostByDate } from "../Utils/OrderedPostByDate";
 import { PostBody } from "./PostBody";
-import { LikeButton } from "./LikeButton";
+/* import { LikeButton } from "./LikeButton";
 import { CommentOnPost } from "./CommentButton";
-import { ViewPost } from "./ViewPost";
+import { ViewPost } from "./ViewPost"; */
 
 export const PostList = () => {
   const [status, setStatus] = useState("idle");
   const { posts } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
-  console.log("posts",posts);
+  //console.log("posts",posts);
   
   useEffect(() => {
     (async () => {

@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postAdded } from './postSlice';
-import { PostList } from "./PostList";
+/* import { postAdded } from './postSlice';
+import { PostList } from "./PostList"; */
 import { createPost } from "./postSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 
@@ -50,7 +50,7 @@ export function NewPost(){
           <label
             htmlFor="file"
             className="flex cursor-pointer items-center rounded p-2 ml-5 font-medium  hover:bg-gray-100">
-            <i class="material-icons text-gray-700 mr-2.5">&#xe251;</i>
+            <i className="material-icons text-gray-700 mr-2.5">&#xe251;</i>
             <span className="text-gray-700">Add Photo</span>
             <input
               type="file"
@@ -66,7 +66,7 @@ export function NewPost(){
               className="text-2xl cursor-pointer"
               onClick={removeImage}
               title="Remove image"
-            ><i class="material-icons">&#xe872;</i></span>
+            ><i className="material-icons">&#xe872;</i></span>
           )}
         </div>
 

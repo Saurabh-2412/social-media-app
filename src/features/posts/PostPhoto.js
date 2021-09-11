@@ -9,7 +9,7 @@ export const PostPhoto = ({ photo }) => {
     />
   ) : (
     <div
-      className={`flex capitalize text-white items-center justify-center rounded-full w-full h-45 md:w-75 md:h-45 object-cover bg-gray-500`}>
+      className={`flex capitalize text-white items-center justify-center rounded-full w-12 h-12 md:w-12 md:h-12 object-cover bg-gray-500`}>
       <span>No image attached</span>
     </div>
   );

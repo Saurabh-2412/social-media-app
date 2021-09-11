@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { dropComment } from "./postSlice";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+//import { dropComment } from "./postSlice";
+//import { useDispatch } from "react-redux";
 import { ProfilePhoto } from "../NavBar/ProfilePhoto";
 import { PostHeader } from "./PostHeader";
-import { getLocalStorage } from "../authentication/Storage";
+//import { getLocalStorage } from "../authentication/Storage";
 
 export function Comments({ comments }){
-    console.log("post comments",comments);
-    const [ deleteComment,setDeleteComment ] = useState(false);
-    const { userdata } = getLocalStorage();
-    const dispatch = useDispatch();
+    //console.log("post comments",comments);
+    //const [ deleteComment,setDeleteComment ] = useState(false);
+    //const { userdata } = getLocalStorage();
+    //const dispatch = useDispatch();
 
-    function deleteCommentAction(itemId,postId){
+    /* function deleteCommentAction(itemId,postId){
         //console.log(itemId,postId);
         dispatch(dropComment({ postid: postId }));
-    }
+    } */
 
     const renderComments = React.Children.toArray(
         comments.map((item) => (

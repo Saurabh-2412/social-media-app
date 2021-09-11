@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+//import { useDispatch, useSelector } from "react-redux";
 import { LikeButton } from "./LikeButton";
-import { CommentOnPost } from "./CommentButton";
+//import { CommentOnPost } from "./CommentButton";
 import { ProfilePhoto } from "../NavBar/ProfilePhoto";
 import { PostHeader } from "./PostHeader";
 
@@ -27,11 +27,14 @@ export function PostBody ({ post }) {
         <p className="mr-2">{likes.length} likes</p>
         <p className="mr-2">{comments.length} comments</p>
       </div>
-      <div className="flex justify-around my-1 border-t-2">
+      <div className="flex justify-around mt-1 border-t-2">
         <LikeButton post={post} />
-        <CommentOnPost post={post} />
+        {/* <CommentOnPost post={post} />
         <Link className="post-buttons" to={`/viewpost/${_id}`}>
-          <span className="pl-1 text-base"><i class="material-icons">&#xe8f4;</i></span>
+          <span className="pl-1 text-base"><i class="material-icons">&#xe0b9;</i></span>
+        </Link> */}
+        <Link className="post-buttons" to={`/viewpost/${_id}`}>
+          <span className="pl-1 text-base"><i className="material-icons">&#xe8f4;</i></span>
         </Link>
       </div>
     </div>

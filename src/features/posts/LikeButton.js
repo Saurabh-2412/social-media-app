@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { likePost, likeSinglePost, unlikePost, unLikeSinglePost } from "./postSlice";
 
@@ -37,7 +37,7 @@ export function LikeButton({ post, type }) {
         post,
         dispatch,
         currentUser
-      )}`}><i class="material-icons">&#xe8dc;</i>
+      )}`}><i className="material-icons">&#xe8dc;</i>
     </button>
   )
 }

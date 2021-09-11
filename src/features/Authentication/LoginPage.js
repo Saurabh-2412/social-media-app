@@ -2,7 +2,7 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";//useLocation
 import { toastError } from "../Utils/ToastMessages";
 import { login } from "./AuthSlice";
 
@@ -11,7 +11,7 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const { token } = useSelector((state) => state.auth);
     const navigate = useNavigate();
-    const location = useLocation();
+    //const location = useLocation();
     const dispatch = useDispatch();
     const [status, setStatus] = useState("idle");
 

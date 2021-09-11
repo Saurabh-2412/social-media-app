@@ -55,7 +55,7 @@ export const follow = createAsyncThunk(
       const response = await axios.post(
         `https://Social-Media.saurabhsharma11.repl.co/v1/userProfile/follow/${userid}`
       );
-      console.log("follow",response.data);
+      //console.log("follow",response.data);
       return fulfillWithValue(response.data);
     } catch (error) {
       return rejectWithValue(error.resposne);
@@ -70,7 +70,7 @@ export const unFollow = createAsyncThunk(
       const response = await axios.post(
         `https://Social-Media.saurabhsharma11.repl.co/v1/userProfile/unfollow/${userid}`
       );
-      console.log("unfollow",response.data);
+      //console.log("unfollow",response.data);
       return fulfillWithValue(response.data);
     } catch (error) {
       return rejectWithValue(error.response);
@@ -105,7 +105,7 @@ export const searchUserClicked = createAsyncThunk(
       const response = await axios.get(
         `https://Social-Media.saurabhsharma11.repl.co/v1/userProfile/searchuser/${value}`
       );
-      console.log("search",response);
+      //console.log("search",response);
       return fulfillWithValue(response.data);
     } catch (error) {
       return rejectWithValue(error.resposne);
