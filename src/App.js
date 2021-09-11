@@ -5,7 +5,7 @@ import './App.css';
 import { PostList } from './features/posts/PostList';
 import { ViewPost } from './features/posts/ViewPost';
 import { ToastContainer } from "react-toastify";
-import { Signup } from "./features/authentication/SignUp";
+import { Signup } from '../src/features/authentication/SignUp';
 import { Login } from "./features/authentication/LoginPage";
 import { logout, setData } from "./features/authentication/AuthSlice";
 import { getLocalStorage } from "./features/authentication/Storage";
