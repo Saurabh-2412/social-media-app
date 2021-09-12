@@ -30,7 +30,6 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //console.log("getLocalStorage",getLocalStorage());
   const { userdata, token } = getLocalStorage();
   useEffect(() => {
     if (token) {
@@ -42,29 +41,8 @@ function App() {
 
   const PrivateRoute = ({ path, ...props }) => {
     const token = JSON.parse(localStorage.getItem("token"));
-    //console.log("private routes",token);
     return token ? <Route path={path} {...props} /> : <Navigate to="/login" />;
   };
-
-  /* return (
-    <div className="App">
-      <Routes>
-        {token ? (
-          <Navigate path="/" to="/feed" />
-        ) : (
-          <Navigate path="/" to="/login" />
-        )}
-        <Route path="/signup" element={ <Signup/> }/>
-        <Route path="/login" element={ <Login/> }/>
-        <PrivateRoute path="/feed" element={ <PostList/> } />
-        <PrivateRoute path="/viewpost/:postid" element={ <ViewPost/> } />
-
-        <PrivateRoute path="/home" element={<PostList />} />
-        <PrivateRoute path="/viewpost/:postid" element={<ViewPost/>} />
-      </Routes>
-      <ToastContainer />
-    </div>
-  ); */
 
   return (
     <div className="App">
