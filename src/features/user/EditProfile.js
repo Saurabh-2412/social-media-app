@@ -1,7 +1,7 @@
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../authentication/AuthSlice";
+import { updateUser } from "../Authentication/AuthSlice";
 import { updateProfile } from "./userSlice";
 import { ProfilePhoto } from "../NavBar/ProfilePhoto";
 
