@@ -2,7 +2,7 @@ import React from "react";
 //import { FiLogOut } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { logout } from "../authentication/AuthSlice";
+import { logout } from "../Authentication/AuthSlice";
 
 export const Logout = () => {
   const dispatch = useDispatch();
