@@ -5,18 +5,18 @@ import './App.css';
 import { PostList } from './features/posts/PostList';
 import { ViewPost } from './features/posts/ViewPost';
 import { ToastContainer } from "react-toastify";
-import { Login } from "./features/authentication/LoginPage";
+import { Login } from './features/authentication/LoginPage';
 import { Signup } from './features/authentication/SignUp';
-import { logout, setData } from "./features/authentication/AuthSlice";
-import { getLocalStorage } from "./features/authentication/Storage";
+import { logout, setData } from './features/authentication/AuthSlice';
+import { getLocalStorage } from './features/authentication/Storage';
 import { Navbar } from "./features/NavBar/Navbar";
-import { UserProfile } from "./features/user/UserProfile";
+import { UserProfile } from './features/user/UserProfile';
 import { Following } from './features/user/Following';
 import { Followers } from './features/user/Followers';
 import { UserPost } from './features/user/UserPost';
 import { UserLikedPosts } from './features/user/UserLikedPost';
-import { setupAuthHeaderForServiceCalls,setupAuthExceptionHandler } from "./features/authentication/ServiceHandler";
-import { SearchModal } from "./features/user/SearchModal";
+import { setupAuthHeaderForServiceCalls,setupAuthExceptionHandler } from './features/authentication/ServiceHandler';
+import { SearchModal } from './features/user/SearchModal';
 
 const useToggle = () => {
   const [state, setState] = useState(false);
